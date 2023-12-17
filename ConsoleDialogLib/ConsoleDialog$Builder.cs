@@ -30,7 +30,8 @@ namespace ConsoleDialogLib
             {
                 if (!isWrongKeyPressed)
                 {
-                    WriteNavigationMessage();
+                    if (dialog.ShowNavigation)
+                        WriteNavigationMessage();
                     WriteWelcomeMessage(dialog);
                     WriteOptions(dialog, selectedOptionIndex);
                 }

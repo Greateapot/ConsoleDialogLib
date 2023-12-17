@@ -6,33 +6,36 @@ namespace ConsoleDialogLib
             string welcomeMessage,
             List<ConsoleDialogOption>? options = null,
             bool exitOnBackspacePressed = true,
-            bool clearConsoleOnStartup = true
+            bool clearConsoleOnStartup = true,
+            bool showNavigation = true
         )
         {
             WelcomeMessage = welcomeMessage;
             ExitOnBackspacePressed = exitOnBackspacePressed;
             ClearConsoleOnStartup = clearConsoleOnStartup;
+            ShowNavigation = showNavigation;
 
             if (options != null)
                 foreach (var option in options)
                     AddOption(option);
         }
 
+        private bool ShowNavigation { get; set; }
         private bool IsExitRequired { get; set; }
         private bool IsShown { get; set; }
 
         private string? key;
         private string Key
         {
-            get { return key ??= GetHashCode().ToString(); }
-            set { key = value; }
+            get => key ??= GetHashCode().ToString();
+            set => key = value;
         }
 
         private string? welcomeMessage;
         private string WelcomeMessage
         {
-            get { return welcomeMessage ??= DefaultWelcomeMessage; }
-            set { welcomeMessage = value; }
+            get => welcomeMessage ??= DefaultWelcomeMessage;
+            set => welcomeMessage = value;
         }
 
         private bool ClearConsoleOnStartup { get; set; }
